@@ -1,4 +1,4 @@
-package Employeepages;
+package Contactpages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -7,10 +7,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 
-public class NavigatetpEmployeepage {
+public class Navigationtocontactpage {
 
 	public static void main(String[] args) throws InterruptedException {
-		
 		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Dell\\Downloads\\chromedriver_win32\\chromedriver.exe");
 		WebDriver driver=new ChromeDriver();
 		
@@ -45,41 +44,24 @@ public class NavigatetpEmployeepage {
 		Actions act=new Actions(driver);
 		act.moveToElement(master).build().perform();
 		
-		//Navigation to Employee main module
-		 act.moveToElement(master).sendKeys(Keys.chord(Keys.TAB,Keys.ARROW_DOWN)).build().perform();
 		
-		 //Navigation to Employee sub module
-		 act.moveToElement(master).sendKeys(Keys.chord(Keys.ARROW_DOWN,Keys.ARROW_RIGHT )).build().perform();
-		 
-		 Thread.sleep(2000);
-	    //Navigation to Employee module
-	     act.moveToElement(master).sendKeys(Keys.ENTER).build().perform();
-		 
-	    //Closing master menu
-		 act.moveByOffset(150, 200).build().perform();
+		//Navigate to contact main module
+		act.moveToElement(master).sendKeys(Keys.chord(Keys.TAB,Keys.ARROW_DOWN)).build().perform();
 		
-	
-	
-	//	act.sendKeys(Keys.chord(Keys.TAB,Keys.ARROW_DOWN,Keys.ARROW_DOWN)).perform();
-		/*	//Hover on master menu
-		Actions act=new Actions(driver);
-		act.moveToElement(master).perform();
+		//Navigate to contact sub module
+		act.moveToElement(master).sendKeys(Keys.chord(Keys.ARROW_RIGHT)).build().perform();
 		
 		Thread.sleep(2000);
-		//Hover on Employee main module
-		WebElement  emp1=driver.findElement(By.xpath("//span[@class='ant-menu-title-content'][normalize-space()='Employee'][1]"));
-		act.moveToElement(emp1).perform();
+		
+		//Navigating to Contact page 
+		act.moveToElement(master).sendKeys(Keys.ENTER).perform();
 		
 		
-		Thread.sleep(2000);
-		//Hover on Employee sub module
-		*/
 		
-	
+		//Closing master menu 
+		//act.moveByOffset(150, 250).build().perform(); please ignore this one
 		
-	 
-		
-		
+		act.moveByOffset(150,290).build().perform();
 		
 	}
 
