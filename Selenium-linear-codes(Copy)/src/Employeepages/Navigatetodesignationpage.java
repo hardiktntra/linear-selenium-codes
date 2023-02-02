@@ -55,7 +55,7 @@ public class Navigatetodesignationpage
 		 //Navigation to Designation module
 		 act.moveToElement(master).sendKeys(Keys.chord(Keys.ARROW_DOWN,Keys.ENTER)).build().perform();
 		 
-		 act.moveByOffset(150, 200).build().perform();
+		 act.moveByOffset(150, 200).build().perform(); 
        
     }
 }
