@@ -1,4 +1,4 @@
-package Employeepages;
+package Companypages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 
-public class NavigatetpEmployeepage {
+public class Navigatetocompany {
 
 	public static void main(String[] args) throws InterruptedException {
 		
@@ -38,43 +38,28 @@ public class NavigatetpEmployeepage {
 		Thread.sleep(3000);
 		
 		//Element for Master menu
-		WebElement master=driver.findElement(By.xpath("//*[@id=\"root\"]/section/header/div/ul/li[1]"));
+		WebElement master=driver.findElement(By.xpath("//span[@class='ant-menu-title-content'][normalize-space()='Master']"));
 		Thread.sleep(2000);
 		
 		//Navigation to master menu
 		Actions act=new Actions(driver);
 		act.moveToElement(master).build().perform();
 		
-		//Navigation to Employee main module
-		 act.moveToElement(master).sendKeys(Keys.chord(Keys.TAB,Keys.ARROW_DOWN)).build().perform();
-		
-		 //Navigation to Employee sub module
-		 act.moveToElement(master).sendKeys(Keys.chord(Keys.ARROW_DOWN,Keys.ARROW_RIGHT )).build().perform();
-		 
-		 Thread.sleep(2000);
-	    //Navigation to Employee module
-	     act.moveToElement(master).sendKeys(Keys.ENTER).build().perform();
-		 
-	    //Closing master menu
-		 act.moveByOffset(150, 200).build().perform();
-		
-	
-	
-	//	act.sendKeys(Keys.chord(Keys.TAB,Keys.ARROW_DOWN,Keys.ARROW_DOWN)).perform();
-		/*	//Hover on master menu
-		Actions act=new Actions(driver);
-		act.moveToElement(master).perform();
+		//Navigation to Company main module
 		
 		Thread.sleep(2000);
-		//Hover on Employee main module
-		WebElement  emp1=driver.findElement(By.xpath("//span[@class='ant-menu-title-content'][normalize-space()='Employee'][1]"));
-		act.moveToElement(emp1).perform();
+		WebElement company=driver.findElement(By.xpath("//span[@class='ant-menu-title-content'][normalize-space()='Company']"));
+		act.moveToElement(company).perform();
 		
 		
-		Thread.sleep(2000);
-		//Hover on Employee sub module
-		*/
 		
+		//Navigation to Company sub-module
+		act.moveToElement(company).sendKeys(Keys.chord(Keys.TAB,Keys.ARROW_RIGHT)).perform();
+		act.moveToElement(company).sendKeys(Keys.ENTER).perform();
+		
+		//Closing master menu
+		act.moveByOffset(150, 200).build().perform();
+	
 	}
 
 }

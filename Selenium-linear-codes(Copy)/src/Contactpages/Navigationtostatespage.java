@@ -1,16 +1,16 @@
-package Employeepages;
+package Contactpages;
+
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 
-public class NavigatetpEmployeepage {
+public class Navigationtostatespage {
 
 	public static void main(String[] args) throws InterruptedException {
-		
 		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Dell\\Downloads\\chromedriver_win32\\chromedriver.exe");
 		WebDriver driver=new ChromeDriver();
 		
@@ -34,47 +34,36 @@ public class NavigatetpEmployeepage {
 		
 		//Clicking on login button
 		submit.click();
-		
+		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS) ;
 		Thread.sleep(3000);
 		
 		//Element for Master menu
-		WebElement master=driver.findElement(By.xpath("//*[@id=\"root\"]/section/header/div/ul/li[1]"));
+		WebElement master=driver.findElement(By.xpath("//span[@class='ant-menu-title-content' ][normalize-space()='Master']"));
 		Thread.sleep(2000);
 		
-		//Navigation to master menu
-		Actions act=new Actions(driver);
-		act.moveToElement(master).build().perform();
 		
-		//Navigation to Employee main module
-		 act.moveToElement(master).sendKeys(Keys.chord(Keys.TAB,Keys.ARROW_DOWN)).build().perform();
+	//Navigation To State
 		
-		 //Navigation to Employee sub module
-		 act.moveToElement(master).sendKeys(Keys.chord(Keys.ARROW_DOWN,Keys.ARROW_RIGHT )).build().perform();
-		 
-		 Thread.sleep(2000);
-	    //Navigation to Employee module
-	     act.moveToElement(master).sendKeys(Keys.ENTER).build().perform();
-		 
-	    //Closing master menu
-		 act.moveByOffset(150, 200).build().perform();
+		Actions act=new Actions(driver);  //Action class to handle Hover on element
+		act.moveToElement(master).perform();    
 		
+		
+	//Hover on Contact
+		
+		Thread.sleep(2000);
+		
+		WebElement contact=driver.findElement(By.xpath("//span[@class='ant-menu-title-content'][normalize-space()='Contacts']")); //Element for Employee
+		act.moveToElement(contact).perform();
 	
+
 	
-	//	act.sendKeys(Keys.chord(Keys.TAB,Keys.ARROW_DOWN,Keys.ARROW_DOWN)).perform();
-		/*	//Hover on master menu
-		Actions act=new Actions(driver);
-		act.moveToElement(master).perform();
 		
+	//Navigation to state listing page
 		Thread.sleep(2000);
-		//Hover on Employee main module
-		WebElement  emp1=driver.findElement(By.xpath("//span[@class='ant-menu-title-content'][normalize-space()='Employee'][1]"));
-		act.moveToElement(emp1).perform();
 		
-		
-		Thread.sleep(2000);
-		//Hover on Employee sub module
-		*/
-		
+		WebElement state=driver.findElement(By.xpath("//span[@class='ant-menu-title-content'][normalize-space()='States']"));  //Element For Designation
+		act.moveToElement(state).click().perform();
+
 	}
 
 }
