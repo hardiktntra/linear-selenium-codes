@@ -4,6 +4,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
+
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -34,14 +37,16 @@ public class Navigatetodesignationpage
 		
 		//Clicking on login button
 		submit.click();
-		
+		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS) ;
 		Thread.sleep(3000);
 		
 		//Element for Master menu
-		WebElement master=driver.findElement(By.xpath("//*[@id=\"root\"]/section/header/div/ul/li[1]"));
+		WebElement master=driver.findElement(By.xpath("//span[@class='ant-menu-title-content' ][normalize-space()='Master']"));
 		Thread.sleep(2000);
 		
-		//Navigation to master menu
+		
+	/*	Unimproved Code  Please Ignore This Code
+	 * //Navigation to master menu
 		Actions act=new Actions(driver);
 		act.moveToElement(master).build().perform();
 		
@@ -55,7 +60,34 @@ public class Navigatetodesignationpage
 		 //Navigation to Designation module
 		 act.moveToElement(master).sendKeys(Keys.chord(Keys.ARROW_DOWN,Keys.ENTER)).build().perform();
 		 
-		 act.moveByOffset(150, 200).build().perform(); 
-       
+		 act.moveByOffset(150, 200).build().perform(); */
+		
+
+		
+		
+//Optimized Code
+		
+		Actions act=new Actions(driver);  //Action class to handle Hover on element
+		act.moveToElement(master).perform();   
+		
+		
+	//Hover on Employee
+		
+		Thread.sleep(2000);
+		
+		WebElement emp=driver.findElement(By.xpath("//span[@class='ant-menu-title-content'][normalize-space()='Employee']")); //Element for Employee
+		act.moveToElement(emp).perform();
+	
+
+	
+		
+	//Hover on Designation	
+		Thread.sleep(2000);
+	
+		WebElement des=driver.findElement(By.xpath("//span[@class='ant-menu-title-content'][normalize-space()='Designation']"));  //Element For Designation
+		act.moveToElement(des).click().perform();
+     
+	
+		
     }
 }
