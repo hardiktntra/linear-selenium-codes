@@ -54,7 +54,7 @@ public class Navigationypqualificationpage {
 		 //Navigation to Qualification module
 		 act.moveToElement(master).sendKeys(Keys.chord(Keys.ARROW_DOWN,Keys.ARROW_DOWN,Keys.ENTER)).build().perform();
 		 
-		 act.moveByOffset(150, 250).build().perform();
+		 act.moveByOffset(150, 250).build().perform(); 
 
 	}
 
